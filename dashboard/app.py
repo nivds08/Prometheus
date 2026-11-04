@@ -145,6 +145,22 @@ st.markdown(
     [data-testid="stTabs"] button {{
         color: {INK} !important;
     }}
+    /* METIS - Multiselect selected chips */
+[data-testid="stSidebar"] [data-baseweb="tag"] {{
+    background-color: #EAE3D5 !important;
+    border: 1px solid #D8CEBD !important;
+    border-radius: 6px !important;
+}}
+
+[data-testid="stSidebar"] [data-baseweb="tag"] * {{
+    color: #262626 !important;
+    fill: #262626 !important;
+}}
+
+[data-testid="stSidebar"] [data-baseweb="select"] > div {{
+    background-color: #FFFDF8 !important;
+    border-color: #D8CEBD !important;
+}}
     </style>
     """,
     unsafe_allow_html=True,
