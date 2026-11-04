@@ -35,6 +35,9 @@ ACCENT = "#0D9488"
 WARNING = "#F59E0B"
 DANGER = "#DC2626"
 SUCCESS = "#16A34A"
+CHALK = "#F4F1EA"
+INK = "#111111"
+BORDER = "#D6D2C4"
 
 SEGMENT_COLORS = {
     "Champions": "#16A34A",
@@ -50,46 +53,100 @@ RFM_COLOR_SEQ = px.colors.qualitative.Bold
 st.markdown(
     f"""
     <style>
+    html, body, .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stHeader"],
+    [data-testid="stToolbar"],
+    [data-testid="stMain"],
+    [data-testid="stBottomBlockContainer"] {{
+        background-color: {CHALK} !important;
+        color: {INK} !important;
+    }}
+    [data-testid="stHeader"] {{
+        background: {CHALK} !important;
+    }}
+    .stApp, .stMarkdown, p, span, label, li, h1, h2, h3, h4, h5, h6,
+    [data-testid="stCaptionContainer"],
+    [data-testid="stWidgetLabel"] {{
+        color: {INK} !important;
+    }}
+    [data-testid="stSidebar"] {{
+        background-color: {CHALK} !important;
+        border-right: 1px solid {BORDER};
+        color: {INK} !important;
+    }}
+    [data-testid="stSidebar"] * {{
+        color: {INK};
+    }}
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="collapsedControl"],
+    [data-testid="stExpandSidebarButton"] {{
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: {INK} !important;
+        background: {CHALK} !important;
+        border: 1px solid {BORDER} !important;
+        border-radius: 6px !important;
+    }}
+    [data-testid="stSidebarCollapseButton"] svg,
+    [data-testid="collapsedControl"] svg,
+    [data-testid="stExpandSidebarButton"] svg {{
+        fill: {INK} !important;
+        color: {INK} !important;
+        stroke: {INK} !important;
+    }}
     .main-header {{
-        background: linear-gradient(90deg, {PRIMARY} 0%, {ACCENT} 100%);
+        background: {CHALK};
         padding: 1.4rem 2rem;
         border-radius: 12px;
-        color: white;
+        border: 1px solid {BORDER};
+        color: {INK};
         margin-bottom: 1.2rem;
     }}
-    .main-header h1 {{ margin: 0; font-size: 1.9rem; font-weight: 700; }}
-    .main-header p {{ margin: 0.3rem 0 0 0; opacity: 0.92; font-size: 0.95rem; }}
+    .main-header h1 {{ margin: 0; font-size: 1.9rem; font-weight: 700; color: {INK}; }}
+    .main-header p {{ margin: 0.3rem 0 0 0; opacity: 0.85; font-size: 0.95rem; color: {INK}; }}
 
     [data-testid="stMetric"] {{
-        background-color: #F8FAFC;
-        border: 1px solid #E2E8F0;
-        border-left: 5px solid {PRIMARY};
+        background-color: {CHALK};
+        border: 1px solid {BORDER};
+        border-left: 5px solid {INK};
         border-radius: 10px;
         padding: 0.8rem 1rem;
+        color: {INK};
     }}
-    [data-testid="stMetricLabel"] {{ font-weight: 600; color: #475569; }}
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricDelta"] {{
+        color: {INK} !important;
+    }}
+    [data-testid="stMetricLabel"] {{ font-weight: 600; }}
 
     .section-title {{
         font-size: 1.15rem;
         font-weight: 700;
-        color: {PRIMARY};
-        border-bottom: 2px solid {ACCENT};
+        color: {INK};
+        border-bottom: 2px solid {INK};
         padding-bottom: 0.3rem;
         margin: 0.6rem 0 0.8rem 0;
     }}
 
     .insight-box {{
-        background-color: #EFF6FF;
-        border: 1px solid #BFDBFE;
-        border-left: 4px solid {ACCENT};
+        background-color: #EBE7DC;
+        border: 1px solid {BORDER};
+        border-left: 4px solid {INK};
         border-radius: 8px;
         padding: 0.7rem 1rem;
         margin: 0.4rem 0 1.1rem 0;
         font-size: 0.92rem;
-        color: #1E3A8A;
+        color: {INK};
         line-height: 1.5;
     }}
-    .insight-box b {{ color: {ACCENT}; }}
+    .insight-box b {{ color: {INK}; }}
+
+    [data-testid="stTabs"] button {{
+        color: {INK} !important;
+    }}
     </style>
     """,
     unsafe_allow_html=True,
@@ -143,7 +200,6 @@ st.markdown(
         Data as of {ANALYSIS_DATE} (last recorded order) &middot;
         Churn = no order in {CHURN_RECENCY_DAYS}+ days &middot;
         Report generated {report_generated}</p>
-        <p style="margin-top:0.35rem; font-size:0.8rem; opacity:0.85;">Built by Adele</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -178,7 +234,7 @@ if sel_risk:
 st.sidebar.metric("Customers in selection", f"{len(filtered_df):,} / {len(customer_df):,}")
 
 st.sidebar.markdown("---")
-st.sidebar.caption("Built by **Adele** · theLook eCommerce + DuckDB + scikit-learn + Streamlit")
+st.sidebar.caption("theLook eCommerce + DuckDB + scikit-learn + Streamlit")
 
 # ----------------------------------------------------------------------------
 # KPI row (company-wide)
