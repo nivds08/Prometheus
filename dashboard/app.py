@@ -604,22 +604,60 @@ def build_html_report():
 <head>
 <meta charset="utf-8">
 <title>Customer Analytics &amp; Churn Report</title>
+
 <style>
   body {{ font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #1E293B;
           max-width: 1100px; margin: 0 auto; padding: 2rem; }}
+
   h1 {{ color: {PRIMARY}; margin-bottom: 0.2rem; }}
   h2 {{ color: {PRIMARY}; border-bottom: 2px solid {ACCENT}; padding-bottom: 0.3rem; margin-top: 2.2rem; }}
+
   .meta {{ color: #64748B; margin-bottom: 1.5rem; }}
   p {{ line-height: 1.7; margin: 0.8rem 0 1.2rem 0; text-align: justify; }}
+
   .kpi-grid {{ display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }}
   .kpi-card {{ background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 5px solid {PRIMARY};
                 border-radius: 10px; padding: 0.8rem 1.2rem; min-width: 160px; }}
   .kpi-card .label {{ font-size: 0.8rem; color: #475569; font-weight: 600; }}
   .kpi-card .value {{ font-size: 1.4rem; font-weight: 700; color: {PRIMARY}; }}
+
   ol {{ padding-left: 1.2rem; }}
   li {{ line-height: 1.7; margin-bottom: 0.8rem; text-align: justify; }}
   .chart-wrap {{ margin: 0.5rem 0 1.8rem 0; }}
+
+  /* Multiselect selected chips */
+  .stMultiSelect [data-baseweb="tag"] {{
+      background-color: #EAE3D5 !important;
+      border: 1px solid #D8CEBD !important;
+      border-radius: 6px !important;
+  }}
+
+  .stMultiSelect [data-baseweb="tag"] span {{
+      color: #262626 !important;
+  }}
+
+  .stMultiSelect [data-baseweb="tag"] svg {{
+      fill: #262626 !important;
+      color: #262626 !important;
+  }}
+
+  /* Multiselect input area */
+  .stMultiSelect [data-baseweb="select"] > div {{
+      background-color: #FFFDF8 !important;
+      border-color: #D8CEBD !important;
+  }}
+
+  /* Dropdown options */
+  div[data-baseweb="popover"] li {{
+      background-color: #FFFDF8;
+      color: #262626 !important;
+  }}
+
+  div[data-baseweb="popover"] li:hover {{
+      background-color: #EAE3D5 !important;
+  }}
 </style>
+
 </head>
 <body>
   <h1>Customer Analytics &amp; Churn Prediction Report</h1>
