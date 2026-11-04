@@ -6,6 +6,8 @@ This project helps an online store answer a simple question:
 
 It takes order and customer data, studies buying habits, groups similar shoppers, flags people who look likely to leave, and shows all of that in a local web dashboard.
 
+🔗**Link to the platform: https://prometheus-customer-analytics-system.streamlit.app/**
+
 ---
 
 ## What you can see
